@@ -7,6 +7,10 @@
 
 **[在线体验 →](https://domain-radar.1833179087.workers.dev)** ｜ MIT License
 
+[![演示视频](docs/video/poster.jpg)](docs/video/dotradar-intro.mp4)
+
+> 50 秒演示：`docs/video/dotradar-intro.mp4`（无声，B 站可自行配音/配乐）
+
 ---
 
 ## 能力

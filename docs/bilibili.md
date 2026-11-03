@@ -1,6 +1,14 @@
 # B 站发布包 · 域名雷达 DotRadar
 
-> 封面图：`docs/bilibili-cover.png`（1920×1080，可直接上传）
+## 已生成的视频
+
+- 成片：`docs/video/dotradar-intro.mp4`（1600×900 / 30fps / H.264 / 约 50 秒 / 5 MB）
+- 封面：`docs/bilibili-cover.png`（1920×1080）
+- 静帧海报：`docs/video/poster.jpg`
+- 视频是**无声**的，方便你后期配音或配乐；字幕已经烧在画面里，不用再对轴。
+
+> 想改文案或重录：`node test/make-video.mjs` 录屏 → `node test/encode-video.mjs` 编码（需要本机 Chrome 和 `@ffmpeg-installer/ffmpeg`）。
+
 > 视频里不要出现任何账号、密码、手机号。
 
 ## 标题（三选一）
