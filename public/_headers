@@ -1,0 +1,8 @@
+/data/tlds.json
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/assets/*
+  Cache-Control: public, max-age=600
+
+/
+  Cache-Control: public, max-age=60

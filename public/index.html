@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>域名雷达 · 全球后缀域名可用性查询</title>
+<meta name="description" content="覆盖全球 1,436 个根域后缀的域名可用性雷达。先定名称规则（模式生成 / 组合生成 / 手动输入），再按长度勾选后缀，结果以方格阵列铺开，RDAP + WHOIS 双核验。">
+<meta name="theme-color" content="#07080d">
+<meta property="og:type" content="website">
+<meta property="og:title" content="域名雷达 · 全球后缀域名可用性查询">
+<meta property="og:description" content="1,436 个根域后缀 · 名称规则 × 后缀范围批量扫描 · RDAP + WHOIS 双核验。">
+<meta property="og:site_name" content="DotRadar 域名雷达">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b0d15'/%3E%3Ccircle cx='32' cy='32' r='17' fill='none' stroke='%237dd3fc' stroke-width='2.5' opacity='.45'/%3E%3Ccircle cx='32' cy='32' r='9' fill='none' stroke='%23a78bfa' stroke-width='2.5' opacity='.8'/%3E%3Ccircle cx='32' cy='32' r='3' fill='%2334d399'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="backdrop" aria-hidden="true">
+  <div class="aurora a1"></div>
+  <div class="aurora a2"></div>
+  <div class="aurora a3"></div>
+  <div class="grid-lines"></div>
+  <div class="grain"></div>
+</div>
+
+<header class="nav">
+  <a class="brand" href="/">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 40 40" width="34" height="34">
+        <circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" stroke-opacity=".28" stroke-width="1.4"/>
+        <circle cx="20" cy="20" r="9.5" fill="none" stroke="currentColor" stroke-opacity=".45" stroke-width="1.4"/>
+        <circle cx="20" cy="20" r="4" fill="none" stroke="currentColor" stroke-opacity=".7" stroke-width="1.4"/>
+        <path class="sweep" d="M20 20 L20 5 A15 15 0 0 1 32.9 12.3 Z" fill="url(#sweepGrad)"/>
+        <circle cx="20" cy="20" r="2" fill="var(--ok)"/>
+        <defs>
+          <linearGradient id="sweepGrad" x1="20" y1="20" x2="34" y2="10" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="var(--accent)" stop-opacity=".55"/>
+            <stop offset="1" stop-color="var(--accent-2)" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </span>
+    <span class="brand-text">
+      <b>域名雷达</b>
+      <i>DOTRADAR</i>
+    </span>
+  </a>
+  <nav class="nav-links">
+    <a href="#names">名称规则</a>
+    <a href="#tlds">后缀范围</a>
+    <a href="#results">扫描结果</a>
+    <a href="#lookup">单域名查询</a>
+  </nav>
+  <div class="nav-meta">
+    <span class="dot-live"></span>
+    <span id="nav-version">目录加载中…</span>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <p class="eyebrow reveal"><span class="ping"></span>全球 <b id="hero-total">1,436</b> 个根域后缀 · 实时可用性判定</p>
+    <h1 class="reveal">先定名字，再挑后缀，<br><span class="grad">一次扫完。</span></h1>
+    <p class="lede reveal">手动输入品牌词、批量组合，或按模式生成（<code>NL</code> = 3l、7q 这类「数字 + 字母」）。再勾选任意长度的后缀——结果铺成方格阵列，可注册的一眼就能看到。</p>
+  </section>
+
+  <section class="card reveal" id="names">
+    <div class="card-head">
+      <div>
+        <h2><span class="step-no">01</span> 名称规则</h2>
+        <p>先决定要查哪些名字。默认按模式生成，输入 NL 就是所有「数字在前、字母在后」的组合。</p>
+      </div>
+      <div class="card-badge" id="names-badge">260 个名称</div>
+    </div>
+
+    <div class="block block--tight">
+      <div class="mode-tabs" role="tablist">
+        <button class="mode-tab is-active" data-mode="pattern" role="tab">模式生成</button>
+        <button class="mode-tab" data-mode="gen" role="tab">组合生成</button>
+        <button class="mode-tab" data-mode="manual" role="tab">手动输入</button>
+      </div>
+
+      <div class="mode-pane" id="pane-pattern">
+        <div class="pattern-row">
+          <input id="pattern-input" type="text" value="NL" spellcheck="false" autocomplete="off" placeholder="例如 NL、LL、L-N" aria-label="名称模式">
+          <span class="gen-preview">将生成 <b id="pattern-count">0</b> 个名称</span>
+        </div>
+        <p class="hint"><code>L</code> = 任意字母，<code>N</code> = 任意数字，<code>W</code> = 字母或数字，其他字符原样保留。例如 <code>NL</code> 生成 3l、a7… 共 260 个；<code>L-L</code> 生成 a-b 形式；<code>abc</code> 只生成一个固定名称。</p>
+      </div>
+
+      <div class="mode-pane" id="pane-gen" hidden>
+        <div class="gen-row">
+          <span class="gen-label">名称长度</span>
+          <div class="seg" id="gen-length">
+            <button data-len="1">1</button>
+            <button data-len="2" class="is-active">2</button>
+            <button data-len="3">3</button>
+            <button data-len="4">4</button>
+          </div>
+          <span class="gen-label">字符集</span>
+          <label class="check"><input type="checkbox" id="cs-letter" checked><span>a–z</span></label>
+          <label class="check"><input type="checkbox" id="cs-digit" checked><span>0–9</span></label>
+          <label class="check"><input type="checkbox" id="cs-hyphen"><span>连字符 -</span></label>
+        </div>
+        <div class="gen-row gen-row--sub">
+          <label class="check"><input type="checkbox" id="gen-no-leading" checked><span>不能以数字或连字符开头</span></label>
+          <span class="gen-preview">将生成 <b id="gen-count">0</b> 个名称</span>
+        </div>
+      </div>
+
+      <div class="mode-pane" id="pane-manual" hidden>
+        <textarea id="names-input" rows="4" spellcheck="false" placeholder="每行一个，支持完整域名或粘贴链接：&#10;mybrand&#10;3l&#10;hello.com"></textarea>
+        <p class="hint">只填名称时自动套用下方所有后缀；写了完整后缀（如 <code>hello.com</code>）则直接查询该域名，不再套用。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card reveal" id="tlds">
+    <div class="card-head">
+      <div>
+        <h2><span class="step-no">02</span> 后缀范围</h2>
+        <p>全世界所有可注册后缀，按长度分组，可跨组多选。不知道选什么就从「热门」开始。</p>
+      </div>
+      <div class="card-badge" id="selection-badge">未选择后缀</div>
+    </div>
+
+    <div class="block block--tight">
+      <div class="group-tabs" role="tablist" aria-label="后缀长度分组">
+        <button class="group-tab is-active" data-group="all" role="tab">全部 <em>—</em></button>
+        <button class="group-tab" data-group="2" role="tab">2 位 <em>—</em></button>
+        <button class="group-tab" data-group="3" role="tab">3 位 <em>—</em></button>
+        <button class="group-tab" data-group="4" role="tab">4 位及以上 <em>—</em></button>
+        <button class="group-tab" data-group="idn" role="tab">国际化 <em>—</em></button>
+        <button class="group-tab group-tab--hot" data-group="hot" role="tab">热门 <em>—</em></button>
+      </div>
+      <p class="group-note"><span>i</span> 根域库里最短的后缀是 2 位，不存在 1 位后缀；「国际化」为 151 个 IDN 后缀，不计入长度分组。</p>
+
+      <div class="picker">
+        <div class="picker-bar">
+          <label class="search-inline">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16.5 16.5 21 21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <input id="tld-search" placeholder="搜索后缀：io、de、中国…" spellcheck="false" aria-label="搜索后缀">
+          </label>
+          <label class="switch"><input type="checkbox" id="only-open" checked><span></span>只显示可公开注册</label>
+          <div class="picker-tools">
+            <button class="btn btn-ghost btn-sm" id="select-visible">全选本组</button>
+            <button class="btn btn-ghost btn-sm" id="clear-selection">清空</button>
+          </div>
+        </div>
+
+        <div class="picker-list" id="tld-list" role="listbox" aria-multiselectable="true" aria-label="后缀列表">
+          <div class="picker-empty">正在加载全球后缀目录…</div>
+        </div>
+
+        <div class="picker-foot">
+          <span id="picker-count">0 个后缀</span>
+          <span class="picker-hint">点击后缀切换选中 · 支持搜索 + 多选</span>
+        </div>
+      </div>
+
+      <div class="selected" id="selected-chips"></div>
+
+      <div class="presets">
+        <span class="presets-label">快捷</span>
+        <button class="preset" data-preset="hot">热门 20 个</button>
+        <button class="preset" data-preset="len2">全部 2 位</button>
+        <button class="preset" data-preset="len3">全部 3 位</button>
+        <button class="preset" data-preset="len3-plus">2 + 3 位</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="runbar">
+    <div class="estimate">
+      <div class="estimate-main"><b id="est-names">0</b> 名称 × <b id="est-tlds">0</b> 后缀 = <strong id="est-total">0</strong> 个域名</div>
+      <div class="estimate-sub" id="est-sub">先选后缀，再开始扫描</div>
+    </div>
+    <div class="run-actions">
+      <button class="btn btn-primary btn-lg" id="run-btn" disabled>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h13M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>开始扫描</span>
+      </button>
+      <button class="btn btn-ghost" id="pause-btn" hidden>暂停</button>
+      <button class="btn btn-ghost btn-danger" id="stop-btn" hidden>停止</button>
+    </div>
+  </div>
+  <div class="warn" id="run-warn" hidden></div>
+
+  <section class="results card" id="results" hidden>
+    <div class="card-head">
+      <div>
+        <h2><span class="step-no">03</span> 扫描结果</h2>
+        <p id="results-sub">等待扫描…</p>
+      </div>
+      <div class="card-badge" id="results-badge">0 / 0</div>
+    </div>
+
+    <div class="result-stats">
+      <span class="rs"><i class="rs-dot ok"></i>可注册 <b id="kpi-available">0</b></span>
+      <span class="rs"><i class="rs-dot bad"></i>已注册 <b id="kpi-registered">0</b></span>
+      <span class="rs"><i class="rs-dot pending"></i>待定 <b id="kpi-unknown">0</b></span>
+      <span class="rs rs--dim">平均 <b id="kpi-latency">—</b></span>
+      <span class="rs rs--dim">吞吐 <b id="kpi-rate">—</b></span>
+    </div>
+
+    <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
+
+    <div class="toolbar">
+      <div class="filters" role="tablist">
+        <button class="filter is-active" data-filter="all">全部 <em>0</em></button>
+        <button class="filter" data-filter="available">可注册 <em>0</em></button>
+        <button class="filter" data-filter="registered">已注册 <em>0</em></button>
+        <button class="filter" data-filter="unknown">待定 <em>0</em></button>
+      </div>
+      <div class="toolbar-right">
+        <label class="search-inline search-inline--sm">
+          <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16.5 16.5 21 21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input id="result-search" placeholder="过滤结果…" spellcheck="false" aria-label="过滤结果">
+        </label>
+        <button class="btn btn-ghost btn-sm" id="copy-btn">复制可注册</button>
+        <button class="btn btn-ghost btn-sm" id="export-csv">导出 CSV</button>
+        <button class="btn btn-ghost btn-sm" id="export-txt">导出 TXT</button>
+      </div>
+    </div>
+
+    <div class="grid-wrap" id="results-scroll">
+      <div class="grid-canvas" id="results-canvas"></div>
+      <div class="grid-empty" id="results-empty" hidden>没有符合条件的结果</div>
+    </div>
+    <p class="grid-foot"><span id="grid-count">0 个域名</span><span class="grid-legend"><i class="lg lg-ok"></i>可注册<i class="lg lg-bad"></i>已注册<i class="lg lg-pending"></i>待定 · 点击方格复制</span></p>
+  </section>
+
+  <section class="lookup" id="lookup">
+    <div class="lookup-inner">
+      <p class="eyebrow reveal"><span class="ping"></span>单域名 · 秒查</p>
+      <h2 class="reveal">只想查一个域名？</h2>
+      <p class="lede reveal">输入完整域名或整条链接，回车即查。结果会同步到地址栏，直接把链接发给别人就行。</p>
+
+      <form class="quick reveal" id="quick-form" autocomplete="off">
+        <div class="quick-field">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          <input id="quick-input" name="domain" placeholder="输入域名，例如 hello.com" spellcheck="false" autocapitalize="off" aria-label="输入要查询的域名">
+          <kbd>Enter</kbd>
+        </div>
+        <button class="btn btn-primary" type="submit" id="quick-btn">
+          <span class="btn-label">立即查询</span>
+          <span class="btn-spinner" aria-hidden="true"></span>
+        </button>
+      </form>
+
+      <div class="quick-result" id="quick-result" hidden aria-live="polite"></div>
+
+      <div class="stats-strip reveal" id="stats-strip">
+        <div><b id="stat-total">—</b><span>全球后缀</span></div>
+        <div><b id="stat-len2">—</b><span>两位后缀</span></div>
+        <div><b id="stat-len3">—</b><span>三位后缀</span></div>
+        <div><b id="stat-rdap">—</b><span>RDAP 直连</span></div>
+        <div><b id="stat-whois">—</b><span>WHOIS 直连</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="coverage" id="coverage">
+    <div class="coverage-head reveal">
+      <h2>三种权威信号，一个诚实的结论</h2>
+      <p>优先问注册局，其次查 WHOIS，最后才用 DNS 推断。每条结果都会告诉你它来自哪里、可信度多少。</p>
+    </div>
+    <div class="coverage-grid">
+      <article class="cov-card reveal">
+        <div class="cov-icon">01</div>
+        <h3>RDAP</h3>
+        <p>结构化注册数据，注册局的官方接口。返回 404 即代表该域名尚未注册，是目前最干净、最可靠的判定方式。</p>
+        <span class="cov-tag" id="cov-rdap">覆盖 — 个后缀</span>
+      </article>
+      <article class="cov-card reveal">
+        <div class="cov-icon">02</div>
+        <h3>WHOIS</h3>
+        <p>通过 43 端口直连注册局。覆盖 .co、.me、.de、.cn、.ru 等大量没有 RDAP 的国家和地区后缀。</p>
+        <span class="cov-tag" id="cov-whois">覆盖 — 个后缀</span>
+      </article>
+      <article class="cov-card reveal">
+        <div class="cov-icon">03</div>
+        <h3>DNS 推断</h3>
+        <p>没有前两种接口时的兜底。NXDOMAIN 只说明「没有解析」，已注册但未配 DNS 的域名也会如此，因此标记为低置信度。</p>
+        <span class="cov-tag" id="cov-dns">覆盖 — 个后缀</span>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div>
+    <b>域名雷达 DotRadar</b>
+    <p>后缀目录来自 IANA 根域库，注册状态实时查询注册局。结果仅供筛选参考，最终以注册局与注册商为准。</p>
+  </div>
+  <div class="footer-meta" id="footer-meta">—</div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="module" src="/assets/app.js"></script>
+</body>
+</html>

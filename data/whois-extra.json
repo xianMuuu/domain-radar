@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "generatedAt": "2026-11-03T11:29:24.312Z",
+    "probed": 70,
+    "found": 3
+  },
+  "servers": {
+    "cd": "whois.nic.cd",
+    "kw": "whois.nic.kw",
+    "za": "whois.nic.za"
+  },
+  "details": {
+    "cd": {
+      "host": "whois.nic.cd",
+      "sampleStatus": "registered",
+      "sample": "Domain Name: zzqqxx99zz-mw0ltghg.cd Domain Status: No Object Found >>> Last update of WHOIS database: 2026-11-03T10:11:05.698Z <<< TERMS OF USE: You are not a"
+    },
+    "kw": {
+      "host": "whois.nic.kw",
+      "sampleStatus": "available",
+      "sample": ">>> Domain zzqqxx99zz-mw0ltuca.kw is available for registration >>> Please visit https://rdap.kwregistry.kw/registrars/ for a list of accredited registrars "
+    },
+    "za": {
+      "host": "whois.nic.za",
+      "sampleStatus": "registered",
+      "sample": "<pre> Available Domain: zzqqxx99zz-mw0lurc6.za >>> Last update of WHOIS database: 2026-11-03T11:29:13Z <<< # WHOIS lookup made at 2026-11-03T11:29:13Z # --"
+    }
+  }
+}
