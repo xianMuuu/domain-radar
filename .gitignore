@@ -3,3 +3,11 @@ node_modules/
 .dev.vars
 *.log
 .DS_Store
+test/video/
+test/video2/
+test/tts/
+test/v2-*.jpg
+test/w-*.jpg
+test/q*.png
+test/r*.png
+test/n1-*.png

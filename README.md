@@ -7,9 +7,10 @@
 
 **[在线体验 →](https://domain-radar.1833179087.workers.dev)** ｜ MIT License
 
-[![演示视频](docs/video/poster.jpg)](docs/video/dotradar-intro.mp4)
+[![演示视频](docs/video/poster.jpg)](docs/video/dotradar-tour.mp4)
 
-> 50 秒演示：`docs/video/dotradar-intro.mp4`（无声，B 站可自行配音/配乐）
+> 3 分 25 秒完整演示（女声 + 字幕，1080p）：`docs/video/dotradar-tour.mp4`
+> 旧版 50 秒无声短片：`docs/video/dotradar-intro.mp4`
 
 ---
 
