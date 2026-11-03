@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; }
+  body {
+    font-family: "HarmonyOS Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    background: #05060a; color: #e8ecf5; position: relative;
+  }
+  .bg { position: absolute; inset: 0; overflow: hidden; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .55; }
+  .b1 { width: 900px; height: 900px; left: -260px; top: -320px; background: radial-gradient(circle, #6366f1, transparent 70%); }
+  .b2 { width: 1000px; height: 1000px; right: -300px; top: -200px; background: radial-gradient(circle, #22d3ee, transparent 70%); opacity: .4; }
+  .b3 { width: 800px; height: 800px; left: 500px; bottom: -420px; background: radial-gradient(circle, #a855f7, transparent 70%); opacity: .35; }
+  .grid-lines { position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size: 64px 64px; mask-image: radial-gradient(ellipse at 40% 40%, #000 40%, transparent 78%); }
+  .wrap { position: relative; padding: 96px 108px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+  .pill { display: inline-flex; align-items: center; gap: 10px; font-size: 22px; color: #b9c2d8;
+    border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); padding: 12px 22px; border-radius: 999px; width: max-content; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: #34d399; box-shadow: 0 0 14px #34d399; }
+  h1 { font-size: 118px; line-height: 1.14; letter-spacing: -2px; font-weight: 800; margin-top: 34px; }
+  h1 em { font-style: normal; background: linear-gradient(100deg, #a5b4fc, #67e8f9 55%, #f0abfc); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { margin-top: 26px; font-size: 34px; color: #9aa6bf; line-height: 1.6; }
+  .stats { display: flex; gap: 56px; margin-top: 54px; }
+  .stat b { display: block; font-size: 56px; font-weight: 800; letter-spacing: -1px; }
+  .stat span { font-size: 21px; color: #7f8ba6; }
+  .foot { display: flex; align-items: flex-end; justify-content: space-between; }
+  .url { font-size: 26px; color: #c7d2fe; font-family: ui-monospace, Consolas, monospace; }
+  .by { font-size: 22px; color: #6b7690; margin-top: 10px; }
+  .tiles { display: grid; grid-template-columns: repeat(4, 128px); gap: 14px; }
+  .t { height: 52px; border-radius: 10px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.03);
+       display: flex; align-items: center; padding: 0 12px; font-family: ui-monospace, Consolas, monospace; font-size: 17px; color: #5b6478; }
+  .t.ok { color: #6ee7b7; border-color: rgba(52,211,153,.55); background: rgba(52,211,153,.1); box-shadow: 0 0 24px rgba(52,211,153,.12) inset; }
+  .t.pending { color: #fcd34d; border-color: rgba(252,211,77,.45); }
+</style>
+</head>
+<body>
+  <div class="bg">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="grid-lines"></div>
+  </div>
+  <div class="wrap">
+    <div>
+      <div class="pill"><span class="dot"></span> 开源 · MIT · Cloudflare Workers</div>
+      <h1>1436 个后缀<br><em>一次扫完</em>。</h1>
+      <div class="sub">全世界 1,436 个根域后缀 · 2 / 3 / 4 位长度分组 · 方格阵列 · 注册局直连判定</div>
+      <div class="stats">
+        <div class="stat"><b>1,436</b><span>全球后缀</span></div>
+        <div class="stat"><b>2,3,4+</b><span>按长度选</span></div>
+        <div class="stat"><b>3 路</b><span>RDAP / WHOIS / DNS</span></div>
+      </div>
+    </div>
+    <div class="foot">
+      <div>
+        <div class="url">domain-radar.1833179087.workers.dev</div>
+        <div class="by">域名雷达 DotRadar · 无登录 · 秒打开 · 免费开源</div>
+      </div>
+      <div class="tiles">
+        <div class="t ok">3l.nz</div><div class="t">a1.com</div><div class="t pending">7q.io</div><div class="t">kx.de</div>
+        <div class="t">zz.io</div><div class="t ok">9n.io</div><div class="t">ab.cn</div><div class="t ok">1q.dev</div>
+        <div class="t pending">m2.co</div><div class="t">a.io</div><div class="t">z9.me</div><div class="t ok">4v.io</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
